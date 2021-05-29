@@ -13,7 +13,7 @@ class AddingNewTaskButton extends StatelessWidget {
       onPressed: () async {
         var result = await Navigator.pushNamed(context, AddTaskView.route);
         if (result != null) {
-          viewModel.updateView();
+          viewModel.notifyListeners();
         }
       },
     );

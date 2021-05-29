@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:todo_list_offline/view/add_category/add_category_view.dart';
 import 'package:todo_list_offline/view/categories/categories_view.dart';
 import 'package:todo_list_offline/view_model/home_view_model.dart';
 

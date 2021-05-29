@@ -33,14 +33,14 @@ class DatabaseServices {
       version: 1,
       onCreate: (db, version) {
         db.execute(
-            "CREATE TABLE tasks(id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, done INTEGER, category TEXT)");
+            "CREATE TABLE tasks(id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, done INTEGER, categoryColor INTEGER)");
         db.execute(
-            "CREATE TABLE categories(id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, color TEXT)");
+            "CREATE TABLE categories(id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, color INTEGER)");
         db.insert(
           "categories",
           {
             "name": "not categorized",
-            "color": "0xFFFFFF",
+            "color": 4294967295,
           },
         );
       },
@@ -58,7 +58,7 @@ class DatabaseServices {
     return db.rawQuery(sql, arguments);
   }
 
-  Future<int> updata({@required String sql, List arguments}) async {
+  Future<int> update({@required String sql, List arguments}) async {
     var db = await database;
     return db.rawUpdate(sql, arguments);
   }

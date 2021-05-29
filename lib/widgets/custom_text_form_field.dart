@@ -16,13 +16,14 @@ class CustomTextFormField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 90.w,
+      width: 95.w,
       child: TextFormField(
         validator: validator,
         onChanged: onChanged,
+        cursorColor: AppColors.white,
         style: TextStyle(
-          color: Colors.white,
-          fontSize: 15.sp,
+          color: AppColors.white,
+          fontSize: 17.sp,
         ),
         decoration: InputDecoration(
           border: UnderlineInputBorder(
@@ -43,8 +44,11 @@ class CustomTextFormField extends StatelessWidget {
           )),
           hintText: hintText,
           hintStyle: TextStyle(
-            color: AppColors.white,
-            fontSize: 15.sp,
+            color: AppColors.lightGray,
+            fontSize: 17.sp,
+          ),
+          errorStyle: TextStyle(
+            fontSize: 12.sp
           ),
         ),
       ),

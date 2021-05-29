@@ -8,10 +8,10 @@ class AddCategoryViewModel extends ChangeNotifier {
 
   String categoryName;
 
-  String categoryColor;
+  int categoryColor;
 
   Future<int> addCategory() async {
   await  _databaseServices.create(
-        sql: 'INSERT INTO $_categoriesTable(name, color) VALUES("$categoryName", "$categoryColor")');
+        sql: 'INSERT INTO $_categoriesTable(name, color) VALUES("$categoryName", $categoryColor)');
   }
 }

@@ -1,9 +1,9 @@
-class Category {
+class CategoryModel {
   int _id;
   String _name;
-  String _color;
+  int _color;
 
-  Category.fromMap(Map<String, dynamic> map) {
+  CategoryModel.fromMap(Map<String, dynamic> map) {
     _id = map["id"];
     _name = map["name"];
     _color = map["color"];
@@ -17,5 +17,5 @@ class Category {
 
   int get id => _id;
   String get name => _name;
-  String get color => _color;
+  int get color => _color;
 }

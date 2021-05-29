@@ -12,7 +12,7 @@ class AddingNewCategoryButton extends StatelessWidget {
       onPressed: () async {
         var result = await Navigator.pushNamed(context, AddCategoryView.route);
         if (result != null) {
-          viewModel.updateView();
+          viewModel.notifyListeners();
         }
       },
     );

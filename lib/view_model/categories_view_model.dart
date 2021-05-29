@@ -9,8 +9,4 @@ class CategorieViewModel extends ChangeNotifier {
     return await _databaseServices.reade(
         sql: "SELECT * FROM $_categoriesTable");
   }
-
-  updateView() {
-    notifyListeners();
-  }
 }

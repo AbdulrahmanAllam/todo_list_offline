@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:path/path.dart';
 import 'package:sizer/sizer.dart';
 import 'package:todo_list_offline/view/add_category/add_category_view.dart';
 import 'package:todo_list_offline/view/add_task/add_task_view.dart';

@@ -61,7 +61,8 @@ class AddCategoryBody extends StatelessWidget {
         padding: EdgeInsets.symmetric(vertical: 2.h, horizontal: 3.w),
         child: ColorPicker(
           onChanged: (color) {
-            viewModel.categoryColor = color.toString();
+            viewModel.categoryColor = color.value;
+            print(color.value);
           },
         ),
       ),

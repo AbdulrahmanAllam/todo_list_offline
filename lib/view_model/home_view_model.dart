@@ -7,25 +7,13 @@ class HomeViewModel extends ChangeNotifier {
   List<String> get popupMenuList => _popupMenuList;
   String _tasksTable = 'tasks';
 
-  
-
-  updateView() {
-    notifyListeners();
-  }
-
   Future<List> getTasks() async {
-    return await _databaseServices.reade(sql: "SELECT * FROM $_tasksTable ORDER BY done");
+    return await _databaseServices.reade(
+        sql: "SELECT * FROM $_tasksTable ORDER BY done");
   }
 
-  checkTask(int id, int done) async {
-    if (done == 0) {
-      done = 1;
-    } else if (done == 1) {
-      done = 0;
-    } else {
-      done = 0;
-    }
-    await _databaseServices.updata(
+  checkTask(int id, bool done) async {
+    await _databaseServices.update(
         sql: "UPDATE $_tasksTable SET done = ? WHERE id = ?",
         arguments: [done, id]);
     notifyListeners();
