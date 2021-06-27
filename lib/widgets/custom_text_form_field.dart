@@ -4,22 +4,28 @@ import 'package:todo_list_offline/utils/app_color.dart';
 
 class CustomTextFormField extends StatelessWidget {
   Function(String) validator;
-  Function(String) onChanged;
+  Function(String) onSaved;
   String hintText;
+  int maxLines;
+  int maxLength;
 
   CustomTextFormField({
-    @required this.validator,
-    @required this.onChanged,
-    @required this.hintText,
+    this.hintText,
+    this.validator,
+    this.onSaved,
+    this.maxLines,
+    this.maxLength,
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 95.w,
+      width: 85.w,
       child: TextFormField(
+        maxLength: maxLength,
+        maxLines: maxLines,
         validator: validator,
-        onChanged: onChanged,
+        onSaved: onSaved,
         cursorColor: AppColors.white,
         style: TextStyle(
           color: AppColors.white,
@@ -47,9 +53,8 @@ class CustomTextFormField extends StatelessWidget {
             color: AppColors.lightGray,
             fontSize: 17.sp,
           ),
-          errorStyle: TextStyle(
-            fontSize: 12.sp
-          ),
+          errorStyle: TextStyle(fontSize: 12.sp),
+          counterStyle: TextStyle(color: AppColors.white),
         ),
       ),
     );

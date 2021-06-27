@@ -32,7 +32,8 @@ dependencies:
   sqflite:
   path:
   sizer:
-  flutter_hsvcolor_picker:
+  flutter_colorpicker:
+  fluttertoast:
 
 dev_dependencies:
   flutter_test:

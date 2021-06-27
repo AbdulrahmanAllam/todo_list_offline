@@ -1,21 +1,23 @@
+import 'package:todo_list_offline/services/const_names.dart';
+
 class TaskModel {
   int _id;
   String _name;
   int _done;
-  int _categoryColor;
+  int _categoryId;
 
   TaskModel.fromMap(Map<String, dynamic> map) {
-    _id = map["id"];
-    _name = map["name"];
-    _done = map["done"];
-    _categoryColor = map["categoryColor"];
+    _id = map[ConstNames.taskIdColumn];
+    _name = map[ConstNames.taskNameColumn];
+    _done = map[ConstNames.taskDoneColumn];
+    _categoryId = map[ConstNames.taskCategoryIdColumn];
   }
 
   Map<String, dynamic> toMap() => {
-        "id": _id,
-        "name": _name,
-        "done": _done,
-        "categoryColor": _categoryColor,
+        ConstNames.taskIdColumn: _id,
+        ConstNames.taskNameColumn: _name,
+        ConstNames.taskDoneColumn: _done,
+        ConstNames.taskCategoryIdColumn: _categoryId,
       };
 
   int get id => _id;
@@ -33,5 +35,5 @@ class TaskModel {
   }
 
   String get name => _name;
-  int get categoryColor => _categoryColor;
+  int get categoryId => _categoryId;
 }

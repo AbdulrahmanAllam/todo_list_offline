@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:todo_list_offline/model/category_model.dart';
 import 'package:todo_list_offline/view_model/categories_view_model.dart';
 
 class CategoriesBody extends StatelessWidget {
@@ -26,12 +27,13 @@ class CategoriesBody extends StatelessWidget {
     return ListView.builder(
       itemCount: snapshot.data.length,
       itemBuilder: (context, index) {
-        return categoryItem(snapshot.data[index]);
+        CategoryModel data = CategoryModel.fromMap(snapshot.data[index]);
+        return categoryItem(data);
       },
     );
   }
 
-  Widget categoryItem(data) {
-    return Text("${data['name']} + ${data['color']}");
+  Widget categoryItem(CategoryModel data) {
+    return Text("${data.name} + ${data.color}");
   }
 }

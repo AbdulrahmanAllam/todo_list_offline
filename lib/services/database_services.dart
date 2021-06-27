@@ -1,8 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
+import 'package:todo_list_offline/services/const_names.dart';
 
-class DatabaseServices {
+class DatabaseServices<T> {
   ////////////////////////singletone///////////////////////
   DatabaseServices._internal();
 
@@ -33,14 +34,14 @@ class DatabaseServices {
       version: 1,
       onCreate: (db, version) {
         db.execute(
-            "CREATE TABLE tasks(id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, done INTEGER, categoryColor INTEGER)");
+            "CREATE TABLE ${ConstNames.tasksTable}(${ConstNames.taskIdColumn} INTEGER PRIMARY KEY AUTOINCREMENT, ${ConstNames.taskNameColumn} TEXT, ${ConstNames.taskDescriptionColumn} TEXT, ${ConstNames.taskDoneColumn} INTEGER, ${ConstNames.taskCategoryIdColumn} INTEGER)");
         db.execute(
-            "CREATE TABLE categories(id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, color INTEGER)");
+            "CREATE TABLE ${ConstNames.categoriesTable}(${ConstNames.categoryIdColumn} INTEGER PRIMARY KEY AUTOINCREMENT, ${ConstNames.categoryNameColumn} TEXT, ${ConstNames.categoryColorColumn} INTEGER)");
         db.insert(
-          "categories",
+          "${ConstNames.categoriesTable}",
           {
-            "name": "not categorized",
-            "color": 4294967295,
+            "${ConstNames.categoryNameColumn}": "not categorized",
+            "${ConstNames.categoryColorColumn}": 4294967295,
           },
         );
       },

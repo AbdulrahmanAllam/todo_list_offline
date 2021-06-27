@@ -16,16 +16,14 @@ class MyApp extends StatelessWidget {
       builder: (context, orientation, deviceType) {
         return MaterialApp(
           initialRoute: HomeView.route,
-          routes: routes,
+          routes: {
+            HomeView.route: (context) => HomeView(),
+            AddTaskView.route: (context) => AddTaskView(),
+            AddCategoryView.route: (context) => AddCategoryView(),
+            CategoriesView.route: (context) => CategoriesView(),
+          },
         );
       },
     );
   }
 }
-
-final routes = {
-  HomeView.route: (context) => HomeView(),
-  AddTaskView.route: (context) => AddTaskView(),
-  AddCategoryView.route: (context) => AddCategoryView(),
-  CategoriesView.route: (context) => CategoriesView(),
-};

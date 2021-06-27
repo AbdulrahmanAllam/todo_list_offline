@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:todo_list_offline/model/category_model.dart';
 import 'package:todo_list_offline/model/task_model.dart';
 import 'package:todo_list_offline/utils/app_color.dart';
 import 'package:todo_list_offline/view_model/home_view_model.dart';
@@ -31,14 +32,17 @@ class HomeBody extends StatelessWidget {
     return ListView.builder(
       itemCount: snapshot.data.length,
       itemBuilder: (BuildContext contex, int index) {
-        TaskModel data = TaskModel.fromMap(snapshot.data[index]);
-        return taskItem(data, viewModel);
+        TaskModel taskData = TaskModel.fromMap(snapshot.data[index]);
+        CategoryModel categoryData =
+            CategoryModel.fromMap(snapshot.data[index]);
+        return taskItem(taskData, categoryData, viewModel);
       },
     );
   }
 
-  Widget taskItem(TaskModel data, HomeViewModel viewModel) {
-    if (data.done == true) {
+  Widget taskItem(
+      TaskModel taskData, CategoryModel categoryData, HomeViewModel viewModel) {
+    if (taskData.done == true) {
       return Row(
         children: [
           Padding(
@@ -52,12 +56,14 @@ class HomeBody extends StatelessWidget {
           SizedBox(
             width: 2.w,
           ),
-          Text(
-            "${data.name}",
-            style: TextStyle(
-                color: AppColors.lightGray,
-                fontSize: 15.sp,
-                decoration: TextDecoration.lineThrough),
+          Expanded(
+            child: Text(
+              "${taskData.name}",
+              style: TextStyle(
+                  color: AppColors.lightGray,
+                  fontSize: 15.sp,
+                  decoration: TextDecoration.lineThrough),
+            ),
           ),
           Expanded(
             child: SizedBox(
@@ -65,9 +71,9 @@ class HomeBody extends StatelessWidget {
             ),
           ),
           Checkbox(
-            value: data.done,
+            value: taskData.done,
             onChanged: (value) {
-              viewModel.checkTask(data.id, value);
+              viewModel.checkTask(taskData.id, value);
             },
             activeColor: AppColors.lightGray,
           )
@@ -80,15 +86,17 @@ class HomeBody extends StatelessWidget {
             padding: EdgeInsets.symmetric(horizontal: 2.w),
             child: Icon(
               Icons.circle,
-              color: Color(data.categoryColor),
+              color: Color(categoryData.color),
               size: 15.sp,
             ),
           ),
-          Text(
-            "${data.name}",
-            style: TextStyle(
-              color: AppColors.white,
-              fontSize: 15.sp,
+          Expanded(
+            child: Text(
+              "${taskData.name}",
+              style: TextStyle(
+                color: AppColors.white,
+                fontSize: 15.sp,
+              ),
             ),
           ),
           Expanded(
@@ -98,9 +106,9 @@ class HomeBody extends StatelessWidget {
           ),
           Theme(
             child: Checkbox(
-              value: data.done,
+              value: taskData.done,
               onChanged: (value) {
-                viewModel.checkTask(data.id, value);
+                viewModel.checkTask(taskData.id, value);
               },
               activeColor: AppColors.white,
             ),
